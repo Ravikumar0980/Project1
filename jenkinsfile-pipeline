@@ -1,0 +1,26 @@
+pipeline{
+   agent{ label 'slave'}
+
+   tools{
+    jdk 'java'
+    maven 'maven'
+   }
+
+stages{
+ 
+   stage('Git clone'){
+   steps{
+    git branch: 'main',
+        url: 'https://github.com/Ravikumar0980/Project1.git'
+   }
+   }
+   stage('Maven build'){
+    steps{
+        sh 'mvn clean install'
+    }
+   }
+
+
+}
+
+}
